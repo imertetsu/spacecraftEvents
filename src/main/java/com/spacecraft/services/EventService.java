@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
@@ -22,9 +23,9 @@ public class EventService {
     @PostConstruct
     public void loadData() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
+        Path path = Paths.get("src", "main", "java", "com", "spacecraft", "persistence", "events.json");
         events = objectMapper.readValue(
-                Files.readAllBytes(Paths.get("src/main/java/com/spacecraft/persistence/events.json")),
-                new TypeReference<List<EventDTO>>() {}
+                Files.readAllBytes(path), new TypeReference<List<EventDTO>>() {}
         );
         for (EventDTO event : events) {
             System.out.println(event);

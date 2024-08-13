@@ -2,6 +2,7 @@ package com.spacecraft.services;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.spacecraft.dtos.EventDTO;
 import com.spacecraft.dtos.LatitudeDTO;
 import jakarta.annotation.PostConstruct;
 import lombok.Getter;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
@@ -21,9 +23,9 @@ public class LatitudeService {
     @PostConstruct
     public void loadData() throws IOException{
         ObjectMapper objectMapper = new ObjectMapper();
+        Path path = Paths.get("src", "main", "java", "com", "spacecraft", "persistence", "latitudes.json");
         latitudes = objectMapper.readValue(
-                Files.readAllBytes(Paths.get("src/main/java/com/spacecraft/persistence/latitudes.json")),
-                new TypeReference<List<LatitudeDTO>>() {}
+                Files.readAllBytes(path), new TypeReference<List<LatitudeDTO>>() {}
         );
     }
 }
