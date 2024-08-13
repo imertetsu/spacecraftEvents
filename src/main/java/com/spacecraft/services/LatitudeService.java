@@ -7,6 +7,7 @@ import com.spacecraft.dtos.LatitudeDTO;
 import jakarta.annotation.PostConstruct;
 import lombok.Getter;
 import org.springframework.stereotype.Service;
+import org.springframework.core.io.ClassPathResource;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -23,9 +24,8 @@ public class LatitudeService {
     @PostConstruct
     public void loadData() throws IOException{
         ObjectMapper objectMapper = new ObjectMapper();
-        Path path = Paths.get("src", "main", "resources", "persistence", "latitudes.json");
-        latitudes = objectMapper.readValue(
-                Files.readAllBytes(path), new TypeReference<List<LatitudeDTO>>() {}
-        );
+        ClassPathResource resource = new ClassPathResource("persistence/latitudes.json");
+
+        latitudes = objectMapper.readValue(resource.getInputStream(), new TypeReference<List<LatitudeDTO>>() {});
     }
 }
