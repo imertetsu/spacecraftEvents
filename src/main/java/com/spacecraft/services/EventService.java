@@ -22,10 +22,6 @@ public class EventService {
         ObjectMapper objectMapper = new ObjectMapper();
         ClassPathResource resource = new ClassPathResource("persistence/events.json");
         events = objectMapper.readValue(resource.getInputStream(), new TypeReference<List<EventDTO>>() {});
-
-        for (EventDTO event : events) {
-            System.out.println(event);
-        }
     }
 
 }

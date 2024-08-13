@@ -21,7 +21,6 @@ public class LatitudeService {
     public void loadData() throws IOException{
         ObjectMapper objectMapper = new ObjectMapper();
         ClassPathResource resource = new ClassPathResource("persistence/latitudes.json");
-
         latitudes = objectMapper.readValue(resource.getInputStream(), new TypeReference<List<LatitudeDTO>>() {});
     }
 }

@@ -21,10 +21,6 @@ public class LongitudeService {
     public void loadData() throws IOException{
         ObjectMapper objectMapper = new ObjectMapper();
         ClassPathResource resource = new ClassPathResource("persistence/longitudes.json");
-
         longitudes = objectMapper.readValue(resource.getInputStream(), new TypeReference<List<LongitudeDTO>>() {});
-        for (LongitudeDTO longitudeDTO: longitudes){
-            System.out.println(longitudeDTO);
-        }
     }
 }
