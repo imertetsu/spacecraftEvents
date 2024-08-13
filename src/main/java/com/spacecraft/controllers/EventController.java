@@ -3,6 +3,7 @@ package com.spacecraft.controllers;
 import com.spacecraft.dtos.EventDTO;
 import com.spacecraft.services.EventService;
 import com.spacecraft.services.PositionService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +25,7 @@ public class EventController {
         this.positionService = positionService;
     }
 
+    @Operation(summary = "Get all events with their positions.", description = "We are going to retrieve all events with their position")
     @GetMapping("/events")
     public ResponseEntity<List<EventDTO>> getAllEvents(){
         List<EventDTO> events = eventService.getEvents();
@@ -34,6 +36,7 @@ public class EventController {
 
         return ResponseEntity.ok(this.eventService.getEvents());
     }
+    @Operation(summary = "Get an event with its position by ID.", description = "We are going to recover an event with its position through the event's ID.")
     @GetMapping("/position/{id}")
     public ResponseEntity<EventDTO> getEventPositionById(@PathVariable String id){
         Optional<EventDTO> eventOpt = eventService.getEvents().stream()
