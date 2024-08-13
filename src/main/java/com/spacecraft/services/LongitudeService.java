@@ -7,7 +7,6 @@ import jakarta.annotation.PostConstruct;
 import lombok.Getter;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
-import org.springframework.core.io.ClassPathResource;
 
 import java.io.IOException;
 import java.util.List;

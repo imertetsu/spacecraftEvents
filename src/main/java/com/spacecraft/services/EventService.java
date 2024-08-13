@@ -7,7 +7,6 @@ import jakarta.annotation.PostConstruct;
 import lombok.Getter;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
-import org.springframework.core.io.ClassPathResource;
 
 import java.io.IOException;
 import java.util.List;
@@ -22,13 +21,8 @@ public class EventService {
     public void loadData() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         ClassPathResource resource = new ClassPathResource("persistence/events.json");
-
-<<<<<<< HEAD
-	events = objectMapper.readValue(resource.getInputStream(), new TypeReference<List<EventDTO>>() {});
-
-=======
         events = objectMapper.readValue(resource.getInputStream(), new TypeReference<List<EventDTO>>() {});
->>>>>>> bd3d21a54cffe516cfd463f05ce7ebf842f2e754
+
         for (EventDTO event : events) {
             System.out.println(event);
         }
