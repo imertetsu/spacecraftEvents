@@ -23,7 +23,7 @@ public class LongitudeService {
     @PostConstruct
     public void loadData() throws IOException{
         ObjectMapper objectMapper = new ObjectMapper();
-        Path path = Paths.get("src", "main", "java", "com", "spacecraft", "persistence", "longitudes.json");
+        Path path = Paths.get("src", "main", "resources", "persistence", "longitudes.json");
 
         longitudes = objectMapper.readValue(
                 Files.readAllBytes(path), new TypeReference<List<LongitudeDTO>>() {}

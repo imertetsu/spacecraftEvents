@@ -23,7 +23,7 @@ public class LatitudeService {
     @PostConstruct
     public void loadData() throws IOException{
         ObjectMapper objectMapper = new ObjectMapper();
-        Path path = Paths.get("src", "main", "java", "com", "spacecraft", "persistence", "latitudes.json");
+        Path path = Paths.get("src", "main", "resources", "persistence", "latitudes.json");
         latitudes = objectMapper.readValue(
                 Files.readAllBytes(path), new TypeReference<List<LatitudeDTO>>() {}
         );
