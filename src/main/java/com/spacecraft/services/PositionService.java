@@ -23,6 +23,12 @@ public class PositionService {
         this.longitudeService = longitudeService;
     }
 
+    /**
+     * Finds the closest latitude data point based on the event's occurrence time.
+     *
+     * @param eventTime The occurrence time of the event as a string.
+     * @return The LatitudeDTO corresponding to the closest timestamp, or null if no data is available.
+     */
     public LatitudeDTO getClosestEventLatitude(String eventTime) {
         LocalDateTime eventDateTime = LocalDateTime.parse(eventTime, formatter);
 
@@ -33,6 +39,12 @@ public class PositionService {
                 .orElse(null);
     }
 
+    /**
+     * Finds the closest longitude data point based on the event's occurrence time.
+     *
+     * @param eventTime The occurrence time of the event as a string.
+     * @return The LongitudeDTO corresponding to the closest timestamp, or null if no data is available.
+     */
     public LongitudeDTO getClosestEventLongitude(String eventTime){
         LocalDateTime eventDateTime = LocalDateTime.parse(eventTime, formatter);
 
